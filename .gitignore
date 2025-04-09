@@ -1,0 +1,34 @@
+# Python failai
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.so
+
+# Virtuali aplinka (jei naudojate virtualenv)
+venv/
+env/
+.venv/
+ENV/
+*.env
+
+# Django slaptieji raktai, duomenų bazės ir kt.
+db.sqlite3
+*.log
+*.pot
+*.pyc
+
+# Django statiniai ir medijos failai
+/static/
+/media/
+
+# IDE ir editoriai
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.iml
+
+# Sistemos failai
+.DS_Store
+Thumbs.db
