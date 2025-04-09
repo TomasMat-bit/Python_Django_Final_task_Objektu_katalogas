@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Statistika</title>
+     {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+
+</head>
+<body>
+    <h1>Statistika pagal kategorijas</h1>
+    <ul>
+        {% for stat in categories_stats %}
+            <li>
+                Kategorija: {{ stat.category__name }}<br>
+                Objektų skaičius: {{ stat.count }}<br>
+                Vidutinė kaina: €{{ stat.avg_price }}<br>
+                Brangiausias objektas: €{{ stat.max_price }}<br>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'item_list' %}" class="stats-button">Atgal į katalogą</a>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prekių katalogas</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <h1>Prekių katalogas</h1>
+    <a href="{% url 'stats' %}" class="stats-button">Peržiūrėti statistiką</a>
+
+    <form method="get">
+        <input type="text" name="kategorija" placeholder="Ieškoti pagal kategoriją">
+        <button type="submit">Ieškoti</button>
+    </form>
+
+    <ul>
+        {% for item in page_obj %}
+            <li>
+                <strong>{{ item.name }}</strong><br>
+                {{ item.description }}<br>
+                Kaina: €{{ item.price }}<br>
+                Kategorija: {{ item.category.name }}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <!-- Paginacija -->
+    <div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1" class="pagination-button">&laquo; Pirmas</a>
+            <a href="?page={{ page_obj.previous_page_number }}" class="pagination-button">Ankstesnis</a>
+        {% endif %}
+
+        <span class="current">
+            Puslapis {{ page_obj.number }} iš {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}" class="pagination-button">Kitas</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}" class="pagination-button">Paskutinis &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+</body>
+</html>
