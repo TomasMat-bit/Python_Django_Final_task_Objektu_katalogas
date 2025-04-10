@@ -1,11 +1,14 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    margin: 10;
-    padding: 10;
-    background-color: #f0f0f5; /* Šviesiai pilka,fono spalva */
+    margin: 0;
+    padding: 0;
+    background-image: url('/static/images/paveiksliukas.jpg');
+    background-size: cover;
+    background-position: center;
     color: #333;
 }
+
 
 
 h1 {
@@ -26,7 +29,7 @@ ul {
 
 
 li {
-    background-color: #ffffff;
+    background-image: url('/static/images/paveiksliukas.jpg');
     border-radius: 10px;
     padding: 20px;
     margin: 10px;
@@ -37,6 +40,7 @@ li {
     width: 30%;
     box-sizing: border-box;
     max-width: 30%;
+    text-align: center;
 }
 
 
@@ -128,10 +132,30 @@ button:hover, .pagination-button:hover {
     transform: scale(1.05);
 }
 
+.action-button {
+    padding: 5px 10px;
+    font-size: 0.8em;
+    background-color: #607D8B; /* Tamsiai pilka/mėlyna */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 10px;
+    display: inline-block;
+    text-align: center;
+}
+
+.action-button:hover {
+    background-color: #455A64; /* Tamsesnė versija */
+    transform: scale(1.05);
+}
+
 /* Puslapio numeris */
 .current {
     font-size: 1.1em;
-    color: #333;
+    color: white;
     margin: 0 10px;
 }
 

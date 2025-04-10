@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prekės forma</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <h1>{{ view.object.pk|yesno:"Redaguoti prekę,Nauja prekė" }}</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Išsaugoti</button>
+    </form>
+
+    <a href="{% url 'item_list' %}" class="stats-button">Atgal</a>
+</body>
+</html>

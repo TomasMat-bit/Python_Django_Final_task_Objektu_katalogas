@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Prekių katalogas</title>
+    <title>Retų meno dirbinių prekių katalogas</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
 </head>
 <body>
-    <h1>Prekių katalogas</h1>
+    <h1>Retų meno dirbinių prekių katalogas</h1>
     <a href="{% url 'stats' %}" class="stats-button">Peržiūrėti statistiką</a>
+    <a href="{% url 'item_add' %}" class="stats-button">Pridėti naują prekę</a>
 
     <form method="get">
-        <input type="text" name="kategorija" placeholder="Ieškoti pagal kategoriją">
-        <button type="submit">Ieškoti</button>
-    </form>
+    <input type="text" name="kategorija" placeholder="Ieškoti pagal kategoriją" value="{{ kategorija }}">
+    <input type="text" name="pavadinimas" placeholder="Ieškoti pagal pavadinimą" value="{{ pavadinimas }}">
+    <button type="submit">Ieškoti</button>
+</form>
 
     <ul>
         {% for item in page_obj %}
@@ -20,23 +22,23 @@
                 <strong>{{ item.name }}</strong><br>
                 {{ item.description }}<br>
                 Kaina: €{{ item.price }}<br>
-                Kategorija: {{ item.category.name }}
+                Kategorija: {{ item.category.name }}<br>
+                <a href="{% url 'item_edit' item.pk %}" class="action-button">Redaguoti</a>
+                <a href="{% url 'item_delete' item.pk %}" class="action-button">Ištrinti</a>
             </li>
         {% endfor %}
     </ul>
 
-    <!-- Paginacija -->
     <div class="pagination">
     <span class="step-links">
         {% if page_obj.has_previous %}
             <a href="?page=1" class="pagination-button">&laquo; Pirmas</a>
+            <a href=">Pirmas</a>
             <a href="?page={{ page_obj.previous_page_number }}" class="pagination-button">Ankstesnis</a>
         {% endif %}
-
         <span class="current">
             Puslapis {{ page_obj.number }} iš {{ page_obj.paginator.num_pages }}.
         </span>
-
         {% if page_obj.has_next %}
             <a href="?page={{ page_obj.next_page_number }}" class="pagination-button">Kitas</a>
             <a href="?page={{ page_obj.paginator.num_pages }}" class="pagination-button">Paskutinis &raquo;</a>

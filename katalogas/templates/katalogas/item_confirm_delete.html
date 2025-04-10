@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ištrinti prekę</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <h1>Ar tikrai norite ištrinti prekę: "{{ object.name }}"?</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Taip, ištrinti</button>
+    </form>
+
+    <a href="{% url 'item_list' %}" class="stats-button">Atšaukti</a>
+</body>
+</html>
